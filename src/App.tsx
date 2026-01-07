@@ -1,13 +1,12 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { SidebarLeft } from './components/SidebarLeft';
 import { CanvasStage } from './components/CanvasStage';
 import { SidebarRight } from './components/SidebarRight';
 import { ScreenshotGrid } from './components/ScreenshotGrid';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { BackgroundType, solidColors, gradientColors } from './types';
-import { TextElement, DEFAULT_TEXT_ELEMENT } from './types/textElement';
+import { solidColors, gradientColors } from './types';
+import { TextElement } from './types/textElement';
 import { Screenshot, createEmptyScreenshot, ScreenshotImage } from './types/screenshot';
-import { exportPng } from './utils/exportPng';
 import { exportZip } from './utils/exportZip';
 import { DEFAULT_LOCALE } from './config/locales';
 import { FileArchive, Loader2 } from 'lucide-react';
@@ -91,11 +90,6 @@ function App() {
     setSafeZoneLayerRef(safeZoneLayer);
   }, []);
 
-  const handleExportPng = useCallback(() => {
-    if (stageRef && safeZoneLayerRef && currentScreenshot) {
-      exportPng(stageRef, safeZoneLayerRef, `screenshotpros_appstore_${currentScreenshot.name.replace(' ', '_')}.png`);
-    }
-  }, [stageRef, safeZoneLayerRef, currentScreenshot]);
 
   const handleExportZip = useCallback(async () => {
     if (!stageRef || !safeZoneLayerRef || !currentScreenshot) {

@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { Upload, Plus, Trash2, Image as ImageIcon, Type, Settings, Palette, Globe } from 'lucide-react';
+import { Upload, Plus, Trash2, Image as ImageIcon, Type, Settings, Palette, Globe, Eye } from 'lucide-react';
 import { solidColors, gradientColors, BackgroundType } from '../types';
 import { TextElement, DEFAULT_TEXT_ELEMENT } from '../types/textElement';
-import { ImageElement, DEFAULT_IMAGE_ELEMENT } from '../types/imageElement';
+import { DEFAULT_IMAGE_ELEMENT } from '../types/imageElement';
 import { ScreenshotImage } from '../types/screenshot';
 import { SUPPORTED_LOCALES } from '../config/locales';
 

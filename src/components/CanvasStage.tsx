@@ -40,7 +40,6 @@ export const CanvasStage: React.FC<CanvasStageProps> = ({
   showSafeZones,
   roundedCorners,
   dropShadow,
-  locale,
   onStageReady,
 }) => {
   const stageRef = useRef<Konva.Stage>(null);
@@ -267,6 +266,47 @@ export const CanvasStage: React.FC<CanvasStageProps> = ({
   const handleTextClick = (id: string) => {
     onSelectedTextChange(id);
     onSelectedImageChange(null);
+  };
+
+  // Handle text transform end (resize)
+  const handleTextTransformEnd = (id: string) => {
+    const selectedText = textRefs.current.get(id);
+    if (!selectedText) return;
+
+    const node = selectedText;
+    const scaleX = node.scaleX();
+    const scaleY = node.scaleY();
+
+    // Reset scale and update font size
+    node.scaleX(1);
+    node.scaleY(1);
+
+    const currentElement = textElements.find(el => el.id === id);
+    if (!currentElement) return;
+
+    // Scale font size based on transform
+    const newFontSize = Math.max(12, Math.min(200, currentElement.fontSize * scaleX));
+    const newMaxWidth = Math.max(50, Math.min(CANVAS_WIDTH, currentElement.maxWidth * scaleX));
+
+    const newX = Math.max(0, Math.min(node.x(), CANVAS_WIDTH - newMaxWidth));
+    const newY = Math.max(0, Math.min(node.y(), CANVAS_HEIGHT));
+
+    node.x(newX);
+    node.y(newY);
+
+    onTextElementsChange(
+      textElements.map((el) =>
+        el.id === id
+          ? {
+              ...el,
+              x: newX,
+              y: newY,
+              fontSize: newFontSize,
+              maxWidth: newMaxWidth,
+            }
+          : el
+      )
+    );
   };
 
   // Get gradient colors
