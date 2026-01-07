@@ -275,7 +275,6 @@ export const CanvasStage: React.FC<CanvasStageProps> = ({
 
     const node = selectedText;
     const scaleX = node.scaleX();
-    const scaleY = node.scaleY();
 
     // Reset scale and update font size
     node.scaleX(1);
