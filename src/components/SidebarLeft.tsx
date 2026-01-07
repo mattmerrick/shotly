@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Upload, Plus, Trash2, Image as ImageIcon, Type, Settings, Palette, Layers, Eye, Globe } from 'lucide-react';
+import { Upload, Plus, Trash2, Image as ImageIcon, Type, Settings, Palette, Globe } from 'lucide-react';
 import { solidColors, gradientColors, BackgroundType } from '../types';
 import { TextElement, DEFAULT_TEXT_ELEMENT } from '../types/textElement';
 import { ImageElement, DEFAULT_IMAGE_ELEMENT } from '../types/imageElement';

@@ -3,7 +3,7 @@ import { Stage, Layer, Rect, Text, Image as KonvaImage, Group, Transformer } fro
 import Konva from 'konva';
 import { CANVAS_WIDTH, CANVAS_HEIGHT } from '../presets/layoutPresets';
 import { Screenshot } from '../types/screenshot';
-import { BackgroundType, gradientColors } from '../types';
+import { gradientColors } from '../types';
 import { Plus, X } from 'lucide-react';
 
 interface ScreenshotGridProps {
@@ -39,7 +39,7 @@ export const ScreenshotGrid: React.FC<ScreenshotGridProps> = ({
     displayScreenshots.push(null as any);
   }
 
-  const handleScreenshotClick = (screenshot: Screenshot | null, index: number, e?: React.MouseEvent) => {
+  const handleScreenshotClick = (screenshot: Screenshot | null, e?: React.MouseEvent) => {
     if (e) {
       e.stopPropagation();
     }
@@ -156,7 +156,6 @@ export const ScreenshotGrid: React.FC<ScreenshotGridProps> = ({
 
     const node = selectedText;
     const scaleX = node.scaleX();
-    const scaleY = node.scaleY();
 
     node.scaleX(1);
     node.scaleY(1);
@@ -188,7 +187,7 @@ export const ScreenshotGrid: React.FC<ScreenshotGridProps> = ({
   };
 
   // Handle image click in grid
-  const handleImageClick = (screenshotId: string, imageId: string, e: Konva.KonvaEventObject<MouseEvent>) => {
+  const handleImageClick = (screenshotId: string, imageId: string, e: Konva.KonvaEventObject<Event>) => {
     e.evt.stopPropagation();
     setSelectedImageIds(prev => {
       const newMap = new Map(prev);
@@ -203,7 +202,7 @@ export const ScreenshotGrid: React.FC<ScreenshotGridProps> = ({
   };
 
   // Handle text click in grid
-  const handleTextClick = (screenshotId: string, textId: string, e: Konva.KonvaEventObject<MouseEvent>) => {
+  const handleTextClick = (screenshotId: string, textId: string, e: Konva.KonvaEventObject<Event>) => {
     e.evt.stopPropagation();
     setSelectedImageIds(prev => {
       const newMap = new Map(prev);
@@ -304,7 +303,7 @@ export const ScreenshotGrid: React.FC<ScreenshotGridProps> = ({
             >
               {isEmpty ? (
                 <button
-                  onClick={() => handleScreenshotClick(null, index)}
+                  onClick={() => handleScreenshotClick(null)}
                   className="w-full aspect-[9/19] bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center hover:bg-gray-50 hover:border-gray-400 transition-colors"
                 >
                   <Plus size={20} className="text-gray-400 mb-1" />
@@ -327,7 +326,7 @@ export const ScreenshotGrid: React.FC<ScreenshotGridProps> = ({
                         const stage = target.getStage();
                         const isBackground = target === stage || target.getClassName() === 'Rect';
                         if (isBackground) {
-                          handleScreenshotClick(screenshot, index);
+                          handleScreenshotClick(screenshot);
                           // Clear selections
                           setSelectedImageIds(prev => {
                             const newMap = new Map(prev);
