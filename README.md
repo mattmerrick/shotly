@@ -1,4 +1,4 @@
-# Shotly
+# ScreenshotPros
 
 A web app for creating iPhone App Store preview screenshots with a locked canvas (1242 × 2688 pixels) and preset layouts.
 

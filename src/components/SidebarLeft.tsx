@@ -170,7 +170,7 @@ export const SidebarLeft: React.FC<SidebarLeftProps> = ({
     <div className="w-80 bg-white border-r border-gray-200 flex flex-col overflow-hidden">
       {/* Header */}
       <div className="p-6 border-b border-gray-200">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Shotly</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-1">ScreenshotPros</h1>
         <p className="text-xs text-gray-500">App Store size: 1242×2688</p>
       </div>
 

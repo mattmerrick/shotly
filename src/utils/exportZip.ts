@@ -92,7 +92,7 @@ export async function exportZip(
   for (const model of IPHONE_MODELS) {
     const dataURL = scaleDesignToSize(stage, model.width, model.height);
     const base64Data = dataURL.split(',')[1];
-    const filename = `shotly_${model.id}_${localeText.locale}.png`;
+    const filename = `screenshotpros_${model.id}_${localeText.locale}.png`;
     zip.file(filename, base64Data, { base64: true });
   }
 
@@ -102,7 +102,7 @@ export async function exportZip(
     // For now, we'll export the canonical size with locale suffix
     const dataURL = scaleDesignToSize(stage, CANONICAL_WIDTH, CANONICAL_HEIGHT);
     const base64Data = dataURL.split(',')[1];
-    const filename = `shotly_canonical_${localeText.locale}.png`;
+    const filename = `screenshotpros_canonical_${localeText.locale}.png`;
     zip.file(filename, base64Data, { base64: true });
   }
 
@@ -115,7 +115,7 @@ export async function exportZip(
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = `shotly_export_${screenshot.name.replace(' ', '_')}.zip`;
+  link.download = `screenshotpros_export_${screenshot.name.replace(' ', '_')}.zip`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

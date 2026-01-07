@@ -93,7 +93,7 @@ function App() {
 
   const handleExportPng = useCallback(() => {
     if (stageRef && safeZoneLayerRef && currentScreenshot) {
-      exportPng(stageRef, safeZoneLayerRef, `shotly_appstore_${currentScreenshot.name.replace(' ', '_')}.png`);
+      exportPng(stageRef, safeZoneLayerRef, `screenshotpros_appstore_${currentScreenshot.name.replace(' ', '_')}.png`);
     }
   }, [stageRef, safeZoneLayerRef, currentScreenshot]);
 
@@ -142,7 +142,7 @@ function App() {
       <div className="h-screen flex flex-col overflow-hidden bg-gray-50">
         {/* Top Header with Export Button */}
         <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-bold text-gray-900">Shotly</h1>
+          <h1 className="text-xl font-bold text-gray-900">ScreenshotPros</h1>
           <button
             onClick={handleExportZip}
             disabled={isExportingZip || !currentScreenshot}

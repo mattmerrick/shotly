@@ -5,12 +5,12 @@ import { CANVAS_WIDTH, CANVAS_HEIGHT } from '../presets/layoutPresets';
  * Exports the Konva stage as a PNG image
  * @param stage - Konva Stage instance
  * @param safeZoneLayer - The safe zone layer to hide during export
- * @param filename - Output filename (default: shotly_appstore_01.png)
+ * @param filename - Output filename (default: screenshotpros_appstore_01.png)
  */
 export function exportPng(
   stage: Stage,
   safeZoneLayer: any,
-  filename: string = 'shotly_appstore_01.png'
+  filename: string = 'screenshotpros_appstore_01.png'
 ): void {
   // Hide safe zone layer before export
   const wasVisible = safeZoneLayer.visible();
